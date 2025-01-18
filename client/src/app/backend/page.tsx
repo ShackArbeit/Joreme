@@ -1,86 +1,40 @@
 'use client'
-import { Box, Flex, VStack, Button, Text,Stack} from '@chakra-ui/react';
-
-import { ColorModeButton } from "@/components/UI/color-mode"
+import { Flex} from '@chakra-ui/react';
 import {useState} from 'react'
-
-
+// Head 負責標頭部分、Under 負責下方顯示部分
+import Head from './components/Head';
+import Under from './components/Under';
 
 const BackendHomePage = () => {
-  const [currentMenu, setCurrentMenu] = useState('各分頁管理'); // C 部分選項
-  const [currentItem, setCurrentItem] = useState(null);   // A 部分選項
-  
-
-  
-
-   interface Menu{
-         [key:string]:string[];
-   }
-  const menuData:Menu = {
-    各分頁管理: ['Option 1', 'Option 2', 'Option 3'],
-    預約管理: ['Option A', 'Option B', 'Option C'],
+  const [currentMenu, setCurrentMenu] = useState<string>('各分頁管理'); 
+  const [currentItem, setCurrentItem] = useState<string|null>(null);   
+  const menuData= {
+    各分頁管理: ['分頁1', '分頁2', '分頁3'],
+    預約管理: ['管理1', '管理2', '管理3'],
   };
-
-  const contentData = {
-    'Option 1': 'Content for Option 1',
-    'Option 2': 'Content for Option 2',
-    'Option 3': 'Content for Option 3',
-    'Option A': 'Content for Option A',
-    'Option B': 'Content for Option B',
-    'Option C': 'Content for Option C',
-  };
+  // const contentData = {
+  //   'Option1': 'Content for Option 1',
+  //   'Option2': 'Content for Option 2',
+  //   'Option3': 'Content for Option 3',
+  //   'OptionA': 'Content for Option A',
+  //   'OptionB': 'Content for Option B',
+  //   'OptionC': 'Content for Option C',
+  // };
   return (
     <Flex direction="column" height="100vh">
-    {/* C 部分 - 頂部導航 */}
-    <Box 
-    bg={{ base: "blue.500", _dark: "black" }}
-    color="white" 
-    padding="4" 
-    display="flex" 
-    justifyContent="space-around">
-       <ColorModeButton />
-      {Object.keys(menuData).map((menu) => (
-        <Button
-          size='lg'
-          bg={{ base: "black", _dark: "white" }}
-          padding='2'
-          color={{ base: "white", _dark: "black" }}
-          borderWidth="3px"
-          borderColor={{ base: "white", _dark: "black" }}
-          key={menu}
-          variant="solid"
-          onClick={() => {
-            setCurrentMenu(menu);
-            setCurrentItem(null); // 重置 A 部分選擇
-          }}
-        >
-          {menu}
-        </Button>
-      ))}
-    </Box>
+      <Head 
+         menuData={menuData}
+         setCurrentMenu={setCurrentMenu}
+         setCurrentItem={setCurrentItem}
+      />
     <Flex flex="1">
-      <VStack
-        bg="gray.100"
-        width="20%"
-        padding="4"
-        align="stretch"
-      >
-        {menuData[currentMenu].map((item:any) => (
-          <Button
-            key={item}
-            variant={currentItem === item ? 'solid' : 'outline'}
-            onClick={() => setCurrentItem(item)}
-          >
-            {item}
-          </Button>
-        ))}
-      </VStack>
-
-      <Box flex="1" padding="6" bg="white">
-        <Text fontSize="xl" fontWeight="bold">
-          {currentItem ? contentData[currentItem] : 'Please select an option'}
-        </Text>
-      </Box>
+      <Under
+        menuData={menuData}
+        currentMenu={currentMenu}
+        setCurrentItem={setCurrentItem}
+        currentItem={currentItem}
+      
+      />
     </Flex>
   </Flex>
   )
