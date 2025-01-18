@@ -21,22 +21,10 @@ const BackendHomePage = () => {
   //   'OptionC': 'Content for Option C',
   // };
   return (
-    <Flex direction="column" height="100vh">
-      <Head 
-         menuData={menuData}
-         setCurrentMenu={setCurrentMenu}
-         setCurrentItem={setCurrentItem}
-      />
-    <Flex flex="1">
-      <Under
-        menuData={menuData}
-        currentMenu={currentMenu}
-        setCurrentItem={setCurrentItem}
-        currentItem={currentItem}
-      
-      />
-    </Flex>
-  </Flex>
+       <div>
+            據了解，黃麟凱到16日傍晚5點半才被通知要遭槍決，得知時有點錯愕，行刑前的4個半小時，他一句話都沒多說；上刑場後，最後一餐吃了將近1小時
+            ，一隻雞腿只咬了一點點，高粱酒啜了一小口，抽了一支菸，留下遺言給親人。
+       </div>
   )
 }
 
