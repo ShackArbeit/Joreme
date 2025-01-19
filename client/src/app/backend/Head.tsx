@@ -1,5 +1,6 @@
 import { Box,Button } from "@chakra-ui/react";
 import { ColorModeButton } from "@/components/UI/color-mode"
+import Link from "next/link";
 
 const Head = () => {
   return (
@@ -19,7 +20,7 @@ const Head = () => {
               borderColor={{ base: "white", _dark: "black" }}
               variant="solid"
           >
-                分頁管理
+                <Link href='/backend/UI' >分頁管理</Link>
           </Button>
           <Button
               size='lg'
@@ -30,7 +31,7 @@ const Head = () => {
               borderColor={{ base: "white", _dark: "black" }}
               variant="solid"
           >
-                預約管理
+                <Link href='/backend/booking' >預約管理</Link>
           </Button>  
         </Box>
   )

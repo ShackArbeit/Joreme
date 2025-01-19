@@ -1,13 +1,16 @@
-
+'use client'
+import { usePathname } from "next/navigation"
+import {Box} from "@chakra-ui/react";
+import UI1 from "../components/UI1"
+import UI2 from "../components/UI2"
 
 const UIPage = () => {
+    const pathname=usePathname()
   return (
-    <div>
-        張介能與1203愛如故主辦人林志豪今（17）日對外發出聯合聲明，
-        表示期盼國會立法通過修法，保障無辜犯罪被害人與遺屬之人權，
-        並在法庭上擁有與被告相同的地位與訴訟權益，「感謝賴清德總統團隊、鄭銘謙部長與法務部團隊有傾聽人民的聲音，這是執政者的天職與義務！我們1203團隊由衷感謝執政團隊明智的抉擇，
-        這是驅動社會良善的強大力量，進而彰顯出憲法人權生命權平等的理念價值！」
-    </div>
+    <>
+     {pathname==='/backend/UI/1' && <UI1/>}
+     {pathname==='/backend/UI/2' && <UI2/>}
+     </>
   )
 }
 

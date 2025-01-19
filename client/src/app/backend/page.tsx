@@ -2,8 +2,8 @@
 import { Flex} from '@chakra-ui/react';
 import {useState} from 'react'
 // Head 負責標頭部分、Under 負責下方顯示部分
-import Head from './components/Head';
-import Under from './components/Under';
+import Head from './Head';
+
 
 const BackendHomePage = () => {
   const [currentMenu, setCurrentMenu] = useState<string>('各分頁管理'); 
